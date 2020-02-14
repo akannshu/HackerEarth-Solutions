@@ -1,0 +1,35 @@
+#include<bits/stdc++.h>
+using namespace std;
+
+double probability(double red, double green, double total)
+{
+    double ans;
+    
+    ans = red/total;
+    
+    if(green>2)
+        ans+=(green/total)*((green-1)/(total-1))*probability(red,green-2,total-2);
+        
+    return ans;    
+}
+
+int main()
+{
+    int t;
+    cin>>t;
+    
+    while(t--)
+    {
+        double r,g;
+        cin>>r>>g;
+        if(r==0 or g==0)
+           cout<<fixed<<setprecision(6)<<(double)1<<endl;
+        else   
+        {
+            double f = (double)probability(r,g,r+g);
+            cout<<fixed<<setprecision(6)<<f<<endl;
+        }    
+    }
+    
+    return 0;
+}
