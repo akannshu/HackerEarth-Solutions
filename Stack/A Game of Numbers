@@ -1,0 +1,52 @@
+#include<bits/stdc++.h>
+using namespace std;
+
+int main()
+{
+    vector<long long int>v;
+    int n;
+    cin>>n;
+    int t = n;
+    
+    while(t--)
+    {
+        long long int k;
+        cin>>k;
+        v.push_back(k);
+    }
+    
+    
+    
+    for(long long int i=0; i<n; i++)
+    {
+        int m,pos = i;
+        
+        for(int j=i; j<n; j++)
+            if(v[j]>v[pos])
+            {    
+                pos=j;
+                break;
+            }
+        
+        if(pos==i)
+            cout<<-1<<" ";
+        else
+        {
+            for(m=pos+1; m<n; m++)
+            {    
+                if(v[m]<v[pos])
+                {
+                    cout<<v[m]<<" ";
+                    break;
+                }
+                    
+            }
+            
+            if(m==n)
+                cout<<-1<<" ";
+        }
+    }    
+    
+    
+    return 0;
+}
