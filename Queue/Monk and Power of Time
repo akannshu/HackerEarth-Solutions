@@ -1,0 +1,44 @@
+#include<bits/stdc++.h>
+using namespace std;
+
+int main()
+{
+    queue<int>q1,crt;
+    int n,count=0;
+    cin>>n;
+    
+    for(int i=0; i<n; i++)
+    {
+        int k;
+        cin>>k;
+        q1.push(k);
+    }
+    
+    for(int i=0; i<n; i++)
+    {
+        int k;
+        cin>>k;
+        crt.push(k);
+    }
+    
+    while(!q1.empty() || !crt.empty())
+    {
+        if(q1.front() == crt.front())
+        {
+            q1.pop();
+            crt.pop();
+            count++;
+        }
+        else
+        {
+            int temp = q1.front();
+            q1.pop();
+            q1.push(temp);
+            count++;
+        }
+    }
+    
+    cout<<count<<endl;
+    
+    return 0;
+}
