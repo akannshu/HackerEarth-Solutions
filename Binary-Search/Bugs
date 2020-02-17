@@ -1,0 +1,55 @@
+include<bits/stdc++.h>
+using namespace std;
+
+int main()
+{
+    int t;
+    cin>>t;
+    vector<int>v;
+    
+    while(t--)
+    {
+        int choice;
+        cin>>choice;
+        
+        if(choice==1)
+        {
+            int k;
+            cin>>k;
+            
+            if(v.size()==0)
+                v.push_back(k);
+            else
+            {
+                int low = 0,pos=0;
+                int high = v.size();
+                while(low<=high)
+                {
+                    int mid = low + (high-low)/2;
+                    
+                    if(k>v[mid])
+                    {
+                        pos = mid;
+                        high = mid-1;
+                    }
+                    else
+                        low = mid+1;
+                }
+                
+                v.insert(v.begin()+pos,k);
+            }
+        }
+        
+        if(choice==2)
+        {
+            if(v.size()<3)
+                cout<<"Not enough enemies"<<endl;
+            else    
+            {
+                cout<<v[(v.size()/3)-1]<<endl;
+            }    
+        }
+    }
+    
+    return 0;
+}
