@@ -1,0 +1,39 @@
+#include<bits/stdc++.h>
+using namespace std;
+
+bool sortsec(const pair<string,int> &a, pair<string,int> &b)
+{
+    return (b.second>a.second);
+}
+
+int main()
+{
+    int n;
+    cin>>n;
+    int t = n;
+    vector<pair<string,int>>v;
+    while(t--)
+    {
+        string s;
+        int k;
+        
+        cin>>s>>k;
+        
+        v.push_back(make_pair(s,k));
+    }
+    
+    
+    vector<string>s;
+    sort(v.begin(), v.end(), sortsec);
+    
+    for(int i=n-1; i>=0; i--)   
+        if(v[n-1].second==v[i].second)
+            s.push_back(v[i].first);
+    
+    sort(s.begin(),s.end());
+    
+    cout<<s[0]<<endl;        
+    
+    
+    return 0;
+}
