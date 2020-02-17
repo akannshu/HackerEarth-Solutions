@@ -1,0 +1,24 @@
+//Question from leet code
+
+class Solution {
+public:
+    vector<int> relativeSortArray(vector<int>& arr1, vector<int>& arr2) {
+        int freq[1005]={0};
+        vector<int>arr3;
+        
+        for(int i=0; i<arr1.size(); i++)
+            freq[arr1[i]]++;
+        
+        for(int i=0; i<arr2.size(); i++)
+            if(freq[arr2[i]]>0)
+                while(freq[arr2[i]]--)
+                    arr3.push_back(arr2[i]);        
+        
+        for(int i=0; i<1005; i++)
+            if(freq[i]>0)
+                while(freq[i]--)
+                    arr3.push_back(i);
+            
+        return arr3; 
+    }
+};
