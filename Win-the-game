@@ -1,3 +1,5 @@
+/* It is a formula based program */
+
 #include<bits/stdc++.h>
 using namespace std;
 
