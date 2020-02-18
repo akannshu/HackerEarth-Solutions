@@ -1,0 +1,29 @@
+#include<bits/stdc++.h>
+using namespace std;
+
+int main()
+{
+    int t,flag=0;
+    cin>>t;
+    
+    while(t--)
+    {
+        string s;
+        cin>>s;
+        flag=0;
+        
+        for(int i=0; i<s.length()-1; i++)
+            if(abs(s[i]-s[i+1])!=1 and abs(s[i]-s[i+1])!=25)
+            {
+                flag=1;
+                break;
+            }
+            
+ 
+        if(flag==0)
+            cout<<"YES"<<endl;
+        else
+            cout<<"NO"<<endl;
+    }
+    return 0;
+}
