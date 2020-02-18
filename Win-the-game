@@ -7,10 +7,10 @@ double probability(double red, double green, double total)
 {
     double ans;
     
-    ans = red/total;
+    ans = red/total; //probability of winning in the draw
     
     if(green>2)
-        ans+=(green/total)*((green-1)/(total-1))*probability(red,green-2,total-2);
+        ans+=(green/total)*((green-1)/(total-1))*probability(red,green-2,total-2); //probability of not loosing in the draw
         
     return ans;    
 }
