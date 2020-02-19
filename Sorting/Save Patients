@@ -1,0 +1,28 @@
+#include<bits/stdc++.h>
+using namespace std;
+
+int main()
+{
+    int n,flag=0;
+    cin>>n;
+    
+    int med[n],pat[n];
+    
+    for(int i=0; i<n; i++)
+        cin>>med[i];
+    for(int i=0; i<n; i++)
+        cin>>pat[i];
+        
+    sort(med,med+n);
+    sort(pat,pat+n);
+    
+    for(int i=0; i<n; i++)
+        if(med[i]<pat[i])
+            flag=1;
+            
+    if(!flag)
+        cout<<"Yes";
+    else
+        cout<<"No";
+    return 0;
+}
