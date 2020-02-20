@@ -1,0 +1,43 @@
+#include<bits/stdc++.h>
+using namespace std;
+
+int main()
+{
+    int n;
+    cin>>n;
+    vector<int>even,odd,sum;
+    sum.push_back(0);
+    sum.push_back(0);
+    
+    for(int i=0; i<n; i++)
+    {
+        int k;
+        cin>>k;
+        
+        if(!(k%2))
+        {
+            even.push_back(k);
+            sum[0]+=k;
+        }
+        else
+        {
+            odd.push_back(k);
+            sum[1]+=k;
+        }
+    }
+    
+    sort(even.begin(),even.end());
+    sort(odd.begin(),odd.end());
+    
+    for(int i=0; i<even.size(); i++)
+        cout<<even[i]<<" ";
+    
+    cout<<sum[0]<<" ";
+    
+    for(int i=0; i<odd.size(); i++)
+        cout<<odd[i]<<" ";
+    
+    cout<<sum[1]<<" ";
+    
+    return 0;
+}
