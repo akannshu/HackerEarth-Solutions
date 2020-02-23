@@ -1,0 +1,35 @@
+#include<bits/stdc++.h>
+using namespace std;
+
+int main()
+{
+    int t;
+    cin>>t;
+    
+    while(t--)
+    {
+        int count=0;
+        
+        int n;
+        cin>>n;
+        
+        string s;
+        cin>>s;
+        
+        if(n==1 and s=="1")
+            cout<<1<<endl;
+        
+        else
+        {
+            for(int i=0; i<s.length()-1; i++)
+                for(int j=i+1; j<s.length();j++)
+                    if(s[i]=='1' and s[j]=='1')
+                        count++;
+            
+            cout<<count<<endl;              
+        }
+        
+    }
+    
+    return 0;
+}
