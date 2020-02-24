@@ -1,0 +1,36 @@
+//https://www.hackerearth.com/practice/algorithms/string-algorithm/basics-of-string-manipulation/practice-problems/algorithm/ashish-and-binary-matrix-1/
+
+#include<bits/stdc++.h>
+using namespace std;
+
+int main()
+{
+    int t;
+    cin>>t;
+    
+    while(t--)
+    {
+        int row, column, flag=0;
+        cin>>row>>column;
+        
+        string s[row];
+        
+        for(int i=0; i<row; i++)
+            cin>>s[i];
+        
+        for(int i=0; i<row-1; i++)
+            for(int j=i+1; j<row; j++)
+                if(s[i].compare(s[j])==0)
+                {
+                    flag=1;
+                    break;
+                }
+        
+        if(flag)
+            cout<<"No"<<endl;
+        else
+            cout<<"Yes"<<endl;
+    }
+    
+    return 0;
+}
