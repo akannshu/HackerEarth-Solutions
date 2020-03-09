@@ -1,0 +1,46 @@
+#include<bits/stdc++.h>
+using namespace std;
+
+int main()
+{
+    int t;
+    cin>>t;
+    
+    while(t--)
+    {
+        int n;
+        cin>>n;
+        
+        string s;
+        cin>>s;
+        
+        auto result = s.find("U");
+        
+        if(result != string::npos)
+            cout<<"Error RNA nucleobases found!"<<endl;
+        
+        else
+        {
+            for(int i=0; i<n; i++)
+            {
+            
+                if(s[i] == 'T')
+                    cout<<"A";
+            
+                else if(s[i] == 'A')
+                    cout<<"T";
+                
+                else if(s[i]=='G')
+                    cout<<"C";
+            
+                else if(s[i]=='C')
+                    cout<<"G";
+            }
+        
+        cout<<endl;
+        }
+        
+    }
+    
+    return 0;
+}
