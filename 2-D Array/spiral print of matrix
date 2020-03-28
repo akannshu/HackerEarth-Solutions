@@ -1,0 +1,46 @@
+#include<bits/stdc++.h>
+using namespace std;
+
+int main()
+{
+  int row,column;
+  cin>>row>>column;
+  int a[row][column];
+
+  for(int i=0; i<row; i++)
+    for(int j=0; j<column; j++)
+      cin>>a[i][j];
+
+  for(int i=0; i<row; i++)
+  {
+    for(int j=0; j<column; j++)
+        cout<<a[i][j]<<" ";
+    cout<<endl;
+  }
+
+  int left,right,up,down;
+  left = 0;
+  up = 0;
+  right = column-1;
+  down = row-1;
+
+  while(left<right and up<down)
+  {
+    for(int i=left; i<=right; i++)
+      cout<<a[up][i]<<" ";
+    up++;
+
+    for(int i=up; i<=down; i++)
+      cout<<a[i][right]<<" ";
+    right--;
+
+    for(int i=right; i>=left; i--)
+      cout<<a[down][i]<<" ";
+    down--;
+
+    for(int i=down; i>=up; i--)
+      cout<<a[i][left]<<" ";
+    left++;
+  }
+  return 0;
+}
