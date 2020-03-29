@@ -1,0 +1,28 @@
+#include<bits/stdc++.h>
+using namespace std;
+
+int max_sum(vector<int> &v)
+{
+  int max_now=v[0],max_far=v[0];
+  for(int i=1; i<v.size(); i++)
+  {
+    max_now = max(max_now+v[i],v[i]);
+    max_far = max(max_far,max_now);
+  }
+  return max_far;
+}
+
+int main()
+{
+  int n;
+  cin>>n;
+  vector<int>v;
+  int k;
+  for(int i=0; i<n; i++)
+  {
+    cin>>k;
+    v.push_back(k);
+  }
+  cout<<max_sum(v)<<endl;
+  return 0;
+}
