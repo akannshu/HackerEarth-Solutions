@@ -1,0 +1,55 @@
+#include<bits/stdc++.h>
+using namespace std;
+
+int main()
+{
+	int n;
+	cin>>n;
+
+	vector<int>freq;
+
+	for(int i=0;i<n;i++)
+	{
+		int k;
+		cin>>k;
+		freq.push_back(k);
+	}
+	
+	sort(freq.begin(),freq.end());
+	
+	int numberofkeys;
+	cin>>numberofkeys;
+
+	int sumOfKeys=0;
+
+	vector<int>keys(51,0);
+
+	for(int i=0;i<numberofkeys;i++)
+	{
+		int x;
+		cin>>x;
+		sumOfKeys+=x;
+		for(int j=1;j<=x;j++)
+			keys[j]++;
+	}
+	if(freq.size()>sumOfKeys)
+		cout<<"-1"<<endl;
+	else
+	{
+		int answer=0,j=n-1;
+		for(int i=1;i<=50;i++)
+		{
+			int sum=0;
+			while(keys[i]>0 && j>=0)
+			{
+				keys[i]--;
+				sum+=freq[j];
+				j--;
+			}
+		answer+=sum*i;	
+		}
+		cout<<answer<<endl;
+
+	}	
+
+}
