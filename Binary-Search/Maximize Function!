@@ -1,0 +1,48 @@
+#include<bits/stdc++.h>
+using namespace std;
+
+#define ll long long int
+
+ll func(ll *a, ll n, ll mid)
+{
+	ll res=0;
+	for(ll i=1; i<=n; i++)
+		res+=max(a[i-1]-(mid*i),0ll);
+	return res;	
+
+}
+int main()
+{
+	ll t;
+	cin>>t;
+
+	while(t--)
+	{
+		ll n,k;
+		cin>>n>>k;
+
+		ll a[n];
+		for(ll i=0; i<n; i++)
+			cin>>a[i];
+
+		ll low = 0,s=0,y=0;
+		ll high = 10000000000000;
+
+		while(low<=high)
+		{
+			ll mid = low + (high-low)/2;
+			ll ans = func(a,n,mid);
+			if(k<=ans)
+			{
+				s = ans;
+				y = mid;
+				low = mid+1;	
+			}
+			else
+				high = mid-1;
+		}
+		cout<<y<<" "<<s<<endl;	
+	}
+
+	return 0;
+}
