@@ -1,0 +1,40 @@
+#include<bits/stdc++.h>
+using namespace std;
+
+int main()
+{
+   stack<int>s1;
+   stack<int>s2;
+   int n;
+   cin>>n;
+   int a[n];
+   for(int i=0; i<n; i++) cin>>a[i];
+
+   for(int i=0,j=n-1;i<n;i++,j--)
+   {
+      s1.push(a[i]);
+      s2.push(a[j]);
+   }
+
+   while(!s1.empty() and !s2.empty())
+   {
+      if(s2.top()>s1.top())
+      {
+         cout<<"1"<<" ";
+         s1.pop();
+      }
+      else if(s1.top()>s2.top())
+      {
+         cout<<"2"<<" ";
+         s2.pop();
+      }
+      else
+      {
+         cout<<"0"<<" ";
+         s1.pop();
+         s2.pop();
+      }
+   }
+
+   return 0;
+}
