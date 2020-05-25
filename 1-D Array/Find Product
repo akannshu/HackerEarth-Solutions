@@ -1,0 +1,17 @@
+#include<bits/stdc++.h>
+using namespace std;
+
+#define ll long long int
+int main()
+{
+	ll n,product=1,mod=1000000007;
+	cin>>n;
+	for(int i=0; i<n; i++)
+	{
+		int k;
+		cin>>k;
+		product = (product*k)%mod;
+	}
+	cout<<product<<endl;
+	return 0;
+}
