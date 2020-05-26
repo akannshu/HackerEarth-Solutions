@@ -1,0 +1,33 @@
+#include<iostream>
+using namespace std;
+
+int main()
+{
+	int t;
+	cin>>t;
+
+	while(t--)
+	{
+		int k;
+		cin>>k;
+		// for window seats
+		if(k%12==0) cout<<k-11<<" "<<"WS"<<endl;
+		else if(k%12==1) cout<<k+11<<" "<<"WS"<<endl;
+	    else if(k%6==0) cout<<k+1<<" "<<"WS"<<endl;
+		else if(k%6==1) cout<<k-1<<" "<<"WS"<<endl;
+    
+		// for middle seats
+    	else if(k%3==2 and k%12==2) cout<<k+9<<" "<<"MS"<<endl;
+		else if(k%3==2 and k%12==11) cout<<k-9<<" "<<"MS"<<endl;
+    	else if(k%3==2 and k%12==5) cout<<k+3<<" "<<"MS"<<endl;    
+    	else if(k%3==2 and k%12==8) cout<<k-3<<" "<<"MS"<<endl;
+	
+		// for aisle seats
+    	else if(k%12==3) cout<<k+7<<" "<<"AS"<<endl;
+		else if(k%12==4) cout<<k+5<<" "<<"AS"<<endl;
+		else if(k%12==9) cout<<k-5<<" "<<"AS"<<endl;
+	    else  cout<<k-7<<" "<<"AS"<<endl;
+	}
+
+	return 0;
+}
