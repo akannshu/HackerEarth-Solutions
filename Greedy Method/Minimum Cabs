@@ -1,0 +1,29 @@
+#include<bits/stdc++.h>
+using namespace std;
+
+int main()
+{
+	int n;
+	cin>>n;
+	int a[1500]={0};
+	
+	for(int i=0; i<n; i++)
+	{
+		int h1,m1,h2,m2,st,et;
+		cin>>h1>>m1>>h2>>m2;
+		st = h1*60 + m1;
+		et = h2*60 + m2;
+		a[st]++;
+		a[et+1]--;
+	}
+
+	int cabs = a[0];
+
+	for(int i=1; i<1500; i++)
+	{
+		a[i]+=a[i-1];
+		cabs = max(cabs,a[i]);
+	}
+	cout<<cabs<<endl;
+	return 0;
+}
