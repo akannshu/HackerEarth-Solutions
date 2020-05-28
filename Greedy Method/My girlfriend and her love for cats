@@ -1,0 +1,22 @@
+#include<bits/stdc++.h>
+using namespace std;
+
+#define ll long long int
+
+int main()
+{
+	ll n;
+	cin>>n;
+	ll s[n], c[n];
+	for(ll i=0; i<n; i++) cin>>s[i];
+	for(ll i=0; i<n; i++) cin>>c[i];
+
+	sort(s,s+n);
+	sort(c,c+n);
+
+	ll max=0;
+
+	for(ll i=0; i<n; i++) max+=s[i]*c[i];
+	cout<<max<<endl;
+	return 0;
+}
