@@ -1,0 +1,22 @@
+#include<bits/stdc++.h>
+using namespace std;
+
+int main()
+{
+	string s1,s2;
+	cin>>s1>>s2;
+	int zcount=0,ocount=0;
+	for(int i=0; i<s1.size(); i++)
+	{
+		if(s1[i]!=s2[i])
+		{
+			if(s1[i]=='0') zcount++;
+			else ocount++;
+
+		}
+	}
+
+	if(zcount != ocount) cout<<-1<<endl;
+	else cout<<zcount<<endl;
+	return 0;
+}
