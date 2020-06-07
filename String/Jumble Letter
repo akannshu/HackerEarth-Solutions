@@ -1,0 +1,24 @@
+#include<bits/stdc++.h>
+using namespace std;
+
+int main()
+{
+	int t;
+	cin>>t;
+	while(t--)
+	{
+		string s;
+		cin>>s;
+
+		for(int i=0; i<s.size(); i++)
+		{
+			char ch = tolower(s[i]);
+			if(ch=='a' or ch=='e' or ch=='i' or ch=='o' or ch=='u' or ch=='y')
+				continue;
+			else cout<<'.'<<ch;
+		}
+
+		cout<<endl;
+	}	
+	return 0;
+}
