@@ -1,0 +1,31 @@
+#include<bits/stdc++.h>
+using namespace std;
+int main()
+{
+  	string s,ans;
+   	cin>>s;
+    long double curmax=0,max=0;
+    int n=0;
+    char ch;
+    while(n<s.size())
+    {
+    	ch=s[0];
+    	s.erase(0,1);
+    	s.push_back(ch);
+    	curmax=s[0]-'a'+1;
+    	for(int i=1;i<s.size();i++)
+    	{
+          curmax+=(s[i]-'a'+1)/pow(2,i);
+    	}
+    	if(curmax>max)
+    	{
+    		max = curmax;
+    		ans=s;
+    	}
+
+    	n++;
+    }
+    cout<<ans<<endl;
+
+	return 0;
+}
