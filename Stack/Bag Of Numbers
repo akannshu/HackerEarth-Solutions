@@ -1,0 +1,37 @@
+#include<bits/stdc++.h>
+using namespace std;
+
+int main()
+{
+	string s;
+	cin>>s;
+	stack<int>v;
+	int n;
+	while(cin>>n)
+	{
+		v.push(n);
+	}
+
+	if(v.size()>2)
+		cout<<"output: ";
+	else
+		cout<<"output ";
+	
+	stack<int>st;
+
+	while(!v.empty())
+	{
+		st.push(v.top());
+		v.pop();
+	}
+
+	n = st.size()-1;
+	while(n>0)
+	{
+		n--;
+		cout<<st.top()<<" ";
+		st.pop();
+	}
+	cout<<st.top()<<"."<<endl;			
+	return 0;
+}
