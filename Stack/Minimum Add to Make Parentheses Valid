@@ -1,0 +1,21 @@
+#include<bits/stdc++.h>
+using namespace std;
+
+int main()
+{
+	string s;
+	cin>>s;
+
+	stack<char>c;
+	c.push(s[0]);
+
+	for(int i=1; i<s.size(); i++)
+	{
+		if(c.empty() or s[i] == '(') c.push(s[i]);
+		else if(s[i] == ')' and c.top()=='(') c.pop();
+		else c.push(s[i]);
+	}
+
+	cout<<c.size()<<endl;
+	return 0;
+}
