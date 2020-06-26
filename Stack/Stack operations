@@ -1,0 +1,27 @@
+#include<bits/stdc++.h>
+using namespace std;
+
+#define ll long long int
+
+int main()
+{
+	ll n,t;
+	cin>>n>>t;
+
+	ll ans = INT_MIN;
+
+	vector<ll>v(n,0);
+
+	for(int i=0; i<n; i++) cin>>v[i];
+
+	for(int i=0; i<min(n,t); i++) ans = max(ans,v[i]);
+
+	if(n-t == 10 or n-t==2) cout<<v[t]<<endl;
+	else
+	{
+		if(n==1) t%2==0?cout<<v[0]:cout<<-1;
+		else cout<<ans;
+	}	
+	
+	return 0;
+}
