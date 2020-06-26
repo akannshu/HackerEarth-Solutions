@@ -1,0 +1,46 @@
+#include<bits/stdc++.h>
+using namespace std;
+
+int main()
+{
+	int t;
+	cin>>t;
+
+	while(t--)
+	{
+		int n;
+		cin>>n;
+
+		vector<int>v(n,0), ans(n,0);
+		unordered_map<int,int>m;
+		stack<int>s;
+
+		for(int i=0; i<n; i++)
+		{
+			cin>>v[i];
+			m[v[i]]++;
+		}
+ 
+		for(int i=0; i<n; i++)
+		{
+			while(!s.empty() and m[v[s.top()]]<m[v[i]] and v[s.top()] != v[i])
+			{
+				ans[s.top()] = v[i];
+				s.pop(); 
+			}
+
+			s.push(i);
+		}
+
+		ans[n-1] = -1;
+		while(!s.empty())
+		{
+			ans[s.top()] = -1;
+			s.pop();
+		}
+
+		for(int i=0; i<n; i++) cout<<ans[i]<<" ";
+		cout<<endl;
+	}
+	return 0;
+}
