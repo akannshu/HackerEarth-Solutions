@@ -1,0 +1,49 @@
+#include<bits/stdc++.h>
+using namespace std;
+
+int main()
+{
+	int n;
+	scanf("%d",&n);
+
+	vector<int>v(n,0),index(n,0);
+	stack<int>s;
+
+	for(int i=0; i<n; i++)
+	{
+		scanf("%d",&v[i]);
+
+		while(!s.empty() and v[s.top()]<v[i])
+		{
+			index[s.top()] = i;
+			s.pop();
+		}
+
+		s.push(i);
+	}
+
+	while(!s.empty())
+	{
+		index[s.top()] = n;
+		s.pop();
+	}
+
+	int q;
+	scanf("%d",&q);
+
+	while(q--)
+	{
+		int l,r,ans=0;
+		scanf("%d %d",&l,&r);
+
+		while(l<=r)
+		{
+			ans++;
+			l = index[l];
+		}
+
+		cout<<ans<<endl;
+	}
+
+	return 0;
+}
