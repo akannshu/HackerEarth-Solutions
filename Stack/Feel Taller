@@ -6,7 +6,7 @@ int main()
 	int n;
 	scanf("%d",&n);
 
-	vector<int>v(n,0),index(n,0),heights(n+1,0);
+	vector<int>v(n,0),index(n,0);
 	stack<int>s;
 
 	for(int i=0; i<n; i++) 
@@ -28,8 +28,6 @@ int main()
 		s.pop();
 	}	
 
-	for(int i=0; i<n; i++) heights[i] = 1+heights[index[i]];
-
 	int t;
 	scanf("%d", &t);
 
@@ -37,8 +35,9 @@ int main()
 	{
 		int l,r,ans=0;
 		scanf("%d %d",&l,&r);
+		r = min(n-1,r);
 
-		while(heights[l]!=0 and l<=r)
+		while(l<=r)
 		{
 			ans++;
 			l = index[l];
