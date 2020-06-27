@@ -1,0 +1,38 @@
+#include<bits/stdc++.h>
+using namespace std;
+
+bool isVowel(char ch) 
+{ 
+	return (ch == 'a') || (ch == 'e') ||(ch == 'i') ||(ch == 'o') ||(ch == 'u'); 
+}
+
+string result(string s, string str)
+{
+	sort(str.begin(),str.end());
+
+	if(s.compare(str)==0) return "Good";
+
+	reverse(str.begin(),str.end());
+
+	if(s.compare(str)==0) return "Worst";
+
+	return "Bad";
+}
+
+int main()
+{
+	int t;
+	cin>>t;
+
+	while(t--)
+	{
+		string s,str="";
+		cin>>s;
+
+		for(int i=0; i<s.size(); i++)
+			if(isVowel(s[i])) str.push_back(s[i]);
+	
+		cout<<result(str,str)<<endl;
+	}
+	return 0;
+}
