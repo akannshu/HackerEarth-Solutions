@@ -1,0 +1,36 @@
+#include<bits/stdc++.h>
+using namespace std;
+
+int main()
+{
+	int t;
+	cin>>t;
+
+	while(t--)
+	{
+		int n;
+		cin>>n;
+
+		vector<int>v(n,0),index(n,0);
+		stack<int>s;
+
+		for(int i=0; i<n; i++) cin>>v[i];
+
+		s.push(0);
+		index[0] = 1;
+
+		for(int i=1; i<n; i++)
+		{
+			while(!s.empty() and v[s.top()]<=v[i]) s.pop();
+
+			if(s.empty()) index[i] = i+1;
+			else index[i] = i-s.top();
+
+			s.push(i);
+		}
+
+		for(int i=0; i<n; i++) cout<<index[i]<<" ";
+		cout<<endl;
+	}
+	return 0;
+}
