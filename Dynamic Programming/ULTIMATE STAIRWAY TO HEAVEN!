@@ -1,0 +1,30 @@
+#include<bits/stdc++.h>
+using namespace std;
+
+#define ll long long int
+#define mod 1000000007
+
+ll ways(ll *a, ll n)
+{
+	ll sum=0,dp[n],temp[n];
+	memset(dp,0,sizeof dp);
+	memset(temp,0,sizeof temp);
+    dp[0]=1;
+    for(ll i=0; i<n-1; i++)
+	{
+        temp[i+1]=(temp[i+1]+dp[i])%mod;
+        if(i+1+a[i]<n) temp[i+1+a[i]]=(mod+temp[i+1+a[i]]-dp[i])%mod;
+        sum=(sum+temp[i+1])%mod;
+        dp[i+1]=sum;
+    }
+
+	return dp[n-1];
+}
+
+int main(){
+    ll n;
+    cin>>n;
+    ll a[n];
+    for(ll i=0; i<n; i++) cin>>a[i];
+    cout<<ways(a,n)<<endl;
+}
