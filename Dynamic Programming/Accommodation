@@ -1,0 +1,33 @@
+#include<bits/stdc++.h>
+using namespace std;
+
+#define mod 1000000007
+
+int result(vector<int>v, int m, int n)
+{
+	int dp[1000005] = {0};
+
+	dp[0] = 1;
+
+		for(int i=1; i<=n; i++)
+		{
+			for(int j=v[i]; j<=m; j++)
+			{
+				dp[j]+=dp[j-v[i]];
+				dp[j]%=mod;
+			}
+		}
+	return dp[m];
+}
+
+int main()
+{
+	int n,m;
+	cin>>n>>m;
+
+	vector<int>v(n+1,0);
+
+	for(int i=1; i<=n; i++) cin>>v[i];
+
+	cout<<result(v,m,n)<<endl;
+}
