@@ -1,0 +1,39 @@
+#include<bits/stdc++.h>
+using namespace std;
+
+#define maximum 1000000
+#define infinite 1000000000
+
+int dp[maximum+5];
+vector<int>v = {2, 3, 5, 7};
+
+
+void result(){
+
+    for(int i=0;i<=maximum;i++)
+        dp[i]=infinite;
+
+	for(int i=0; i<v.size(); i++)
+		dp[v[i]] = 1;	
+
+    for(int i=1;i<=maximum;i++)
+        for(int j=0; j<v.size();j++)
+            if(i-v[j]>=0)
+                dp[i] = min(dp[i], dp[i-v[j]] + 1);
+        
+    for(int i=0;i<=maximum;i++)
+        if(dp[i]>=infinite)
+            dp[i] = -1;
+}
+
+int main(){
+    result();
+    int t;
+    cin>>t;
+    while(t--){
+        int n;
+		cin>>n;
+        cout<<dp[n]<<endl;
+    }
+    return 0;
+}
