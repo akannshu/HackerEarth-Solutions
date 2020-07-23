@@ -1,0 +1,43 @@
+#include<bits/stdc++.h>
+using namespace std;
+
+#define ll long long int 
+
+ll result(ll *a, ll i, ll n, ll k, ll *dp)
+{
+	if(i>=n) return 0;
+
+	if(dp[i] != 0) return dp[i];
+	
+	ll x = a[i] + result(a,i+k+1,n,k,dp);
+	ll y = result(a,i+1,n,k,dp);
+
+	return dp[i] = max(x,y);
+}
+
+int main()
+{
+	ll t;
+	cin>>t;
+
+	while(t--)
+	{
+		ll n,k;
+		cin>>n>>k;
+		ll a[n];
+		ll check = 0; 
+		for(ll i=0; i<n; i++)
+		{
+			cin>>a[i];
+			check = max(check,a[i]);
+		}	
+
+		if(check == 0) cout<<0<<endl;
+		else
+		{
+			ll dp[10005] = {0};
+			cout<<result(a,0,n,k,dp)<<endl;
+		}	
+	}
+	return 0;
+}
