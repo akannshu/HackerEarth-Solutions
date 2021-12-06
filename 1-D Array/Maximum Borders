@@ -1,0 +1,74 @@
+#include<bits/stdc++.h>
+using namespace std;
+
+long getResult(char arr[1005][1005], long rows, long columns) {
+	long count, res=INT_MIN;
+
+	for(long i=0; i<rows; i++) {
+		count = 0;
+		for(long j=0; j<columns; j++) {
+			if(arr[i][j] == '#') {
+				count++;
+				arr[i+1][j] = arr[i+1][j] == '#' ? '$' : arr[i+1][j];
+			} else if(arr[i][j] == '$') {
+				res = max(res, count);
+				arr[i+1][j] = arr[i+1][j] == '#' ? '$' : arr[i+1][j];
+				count = 0;
+			} else {
+				res = max(res, count);
+				count = 0;
+			}
+		}
+		res = max(res, count);
+	}
+
+	return res;
+}
+
+int main() {
+	// variables
+	long noOfTestCases, rows, columns, res=INT_MIN, x;
+	char arr[1005][1005], temp[1005][1005];
+	cin>>noOfTestCases;
+	while(noOfTestCases--) {
+		cin>>rows>>columns;
+		res=INT_MIN;
+		// input array
+		for(int i=0; i<rows; i++)
+			for(int j=0; j<columns; j++)
+				cin>>arr[i][j];
+
+		//top view 
+		for(int i=0; i<rows; i++)
+			for(int j=0; j<columns; j++) 
+				temp[i][j] = arr[i][j];
+
+		res = max(res, getResult(temp, rows, columns));
+
+		//bottom view
+		for(int i=rows-1; i>=0; i--)
+			for(int j=0; j<columns; j++)
+				temp[rows-i-1][j] = arr[i][j];
+		
+		res = max(res, getResult(temp, rows, columns));
+
+		// left view
+		for(int i=0; i<columns; i++)
+			for(int j=0; j<rows; j++)
+				temp[i][j] = arr[j][i];
+
+		res = max(res, getResult(temp, rows, columns));
+
+		// right view
+		for(int i=columns-1; i>=0; i--)
+			for(int j=0; j<rows; j++) 
+				temp[columns-i-1][j] = arr[i][j];
+		
+		res = max(res, getResult(temp, rows, columns));
+
+		// final output
+		cout<<res<<endl;				
+	}
+
+	return 0;
+}
