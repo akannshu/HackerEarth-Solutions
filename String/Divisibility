@@ -1,0 +1,16 @@
+#include<bits/stdc++.h>
+using namespace std;
+
+int main() {
+    long n, x;
+    cin>>n;
+    string res;
+
+    for(long i=0; i<n; i++) {
+        cin>>x;
+        res += to_string(x%10);
+    }
+
+    (res[res.size() - 1] - '0') == 0 ? cout<<"Yes"<<endl : cout<<"No"<<endl; 
+    return 0;
+}
