@@ -1,0 +1,32 @@
+#include <bits/stdc++.h>
+using namespace std;
+int main() {
+	long t;
+	cin>>t;
+	
+	while(t--){
+		long n;
+		cin>>n;
+
+		long arr[n];
+
+		for(long i=0; i<n; i++) {
+			cin>>arr[i];
+		}
+
+		sort(arr, arr+n, greater<long>());
+
+		long min = INT_MAX;
+
+		for(long i=0; i<n-1; i++) {
+			long j = i+1;
+			long k = ((arr[i] & arr[j]) ^ (arr[i] | arr[j]));
+			if(min > k) min = k;
+			if(min == 0) break;
+		}
+
+		cout<<min<<endl;
+	}
+
+return 0;
+}
